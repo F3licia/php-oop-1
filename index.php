@@ -6,14 +6,15 @@
    => all'interno della classe è definito almeno un metodo 
 - vengono istanziati almeno due oggetti ‘Movie’ e stampati a schermo i valori delle relative proprietà*/
 
+                       
+     //classe 
+    class Movie {    
+    public $title;
+    public $secondTitle;
+    public $year;
 
-    class Movie {
-        public $title;
-        public $secondTitle;
-        public $year;
-
-
-        function __construct($movieData) {
+        //costruttore
+        function __construct($movieData) {          
             $this->title = $movieData["title"];
             $this->year = $movieData["release_date"];
                 if($movieData["original_title"] != $movieData["title"] ){
@@ -25,7 +26,8 @@
             $this->overview = isset($movieData["overview"]) ? $movieData["overview"] : null; 
         }
 
-        public function renderCard() {
+        //metodo
+        public function renderCard() {              
             echo "<h2>" . $this->title . "</h2>";
             echo "<h3>" . $this->secondTitle . "</h3>";
             echo "<h5>" . $this->overview . "</h5>";
@@ -36,7 +38,6 @@
 };
 
 $movieList = [
-
         [
             "adult" => false,
             "backdrop_path" => "/roYyPiQDQKmIKUEhO912693tSja.jpg",
@@ -84,15 +85,13 @@ $movieList = [
             "video"=> false,
             "vote_average" => "6.5",
         ],
-    
 ];
 
 
 foreach($movieList as $movieData){
     $instance = new Movie($movieData);
-
-    //$instance-> renderCard(); //stampa tutto
-    $newList[] = $instance;  //per prendere gli elementi singoli, copio l'istanza in un array
+    //$instance-> renderCard();  //stampa tutto
+    $newList[] = $instance;     //per prendere gli elementi singoli, copio l'istanza in un array
 }
 
 echo $newList[0]->renderCard();
